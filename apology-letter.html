@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>A Letter For You</title>
+
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #f8cdda, #fbd786);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .envelope {
+        background: #fff;
+        width: 320px;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 10px;
+        color: #444;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        margin-top: 10px;
+        font-size: 16px;
+    }
+
+    button {
+        margin-top: 15px;
+        padding: 10px 20px;
+        border: none;
+        background: #ff6f91;
+        color: white;
+        border-radius: 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #ff4f75;
+    }
+
+    .letter {
+        display: none;
+        margin-top: 15px;
+        text-align: left;
+        animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .error {
+        color: red;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="envelope">
+    <h2>💌 Sealed Letter</h2>
+    <p>Only for someone special</p>
+
+    <input type="text" id="nameInput" placeholder="Enter your name to open" />
+    <button onclick="openLetter()">Open Letter</button>
+
+    <p class="error" id="errorMsg"></p>
+
+    <div class="letter" id="letter">
+        <h3>Dear <span id="herName"></span>,</h3>
+        <p>
+            I’m really sorry for shouting at you.  
+            I know you don’t like being shouted at, and I truly didn’t mean to hurt you.
+        </p>
+        <p>
+            You mean a lot to me, and I should have spoken with more patience and care.
+            I take responsibility for my mistake, and I’m genuinely sorry.
+        </p>
+        <p>
+            I’m learning, I’m trying, and I want to be better for us.
+            Thank you for listening, and thank you for being you.
+        </p>
+        <p style="margin-top:20px;">
+            With sincerity,<br/>
+            ❤️
+        </p>
+    </div>
+</div>
+
+<script>
+    const correctName = "HER_NAME_HERE"; // 👈 replace with her real name
+
+    function openLetter() {
+        const input = document.getElementById("nameInput").value.trim();
+        const error = document.getElementById("errorMsg");
+        const letter = document.getElementById("letter");
+
+        if (input.toLowerCase() === correctName.toLowerCase()) {
+            document.getElementById("herName").innerText = input;
+            letter.style.display = "block";
+            error.innerText = "";
+        } else {
+            error.innerText = "This letter is not for you 💔";
+        }
+    }
+</script>
+
+</body>
+</html>
